@@ -184,7 +184,7 @@ class CustomGemini:
 
 
 gemini = CustomGemini()
-gemini.set_key('AIzaSyDYKWbhIrY0iKKUvWBLNj5bKXU3kxbGspw')
+gemini.set_key('API key here')
 gemini.set_model()
 # prompt = 'What is the meaning of life?'
 prompt = input("Enter a prompt: ")
