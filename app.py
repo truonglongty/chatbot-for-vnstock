@@ -6,7 +6,7 @@ import streamlit as st
 from chromadb import Documents, EmbeddingFunction, Embeddings
 
 
-os.environ["GEMINI_API_KEY"] = 'AIzaSyC5VIYoKByOwfuELrvs75FBXaryYX2Bzrc'
+os.environ["GEMINI_API_KEY"] = 'api-key here'
 
 class GeminiEmbeddingFunction(EmbeddingFunction):
     def __call__(self, input: Documents) -> Embeddings:
