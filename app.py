@@ -6,7 +6,7 @@ import streamlit as st
 from chromadb import Documents, EmbeddingFunction, Embeddings
 
 
-os.environ["GEMINI_API_KEY"] = 'api-key here'
+os.environ["GEMINI_API_KEY"] = 'AIzaSyASDi1j3Xrp1Dyp1YuTnY7wfUfDZ3RvL9M'
 
 class GeminiEmbeddingFunction(EmbeddingFunction):
     def __call__(self, input: Documents) -> Embeddings:
@@ -36,11 +36,11 @@ def get_relevant_passage(query, db, n_results):
 
 def make_rag_prompt(query, relevant_passage):
   escaped = relevant_passage.replace("'", "").replace('"', "").replace("\n", " ")
-  prompt = ("""You are a helpful and informative bot that answers questions using text from the reference passage included below. \
-  Be sure to respond in a complete sentence, being comprehensive, including all relevant background information. \
-  However, you are talking to a non-technical audience, so be sure to break down complicated concepts and \
-  strike a friendly and converstional tone. \
-  If the passage is irrelevant to the answer, you may ignore it.
+  prompt = ("""Bạn là một bot hữu ích và giàu thông tin, trả lời các câu hỏi bằng cách sử dụng văn bản từ đoạn văn tham khảo bên dưới. \
+  Đảm bảo trả lời bằng một câu hoàn chỉnh, toàn diện, bao gồm tất cả thông tin cơ bản có liên quan. \
+  Tuy nhiên, bạn đang nói chuyện với khán giả không rành về kỹ thuật, vì vậy hãy nhớ chia nhỏ các khái niệm phức tạp và \
+  tạo ra một giọng điệu thân thiện và mang tính đối thoại. \
+  Nếu đoạn văn không liên quan đến câu trả lời, bạn có thể bỏ qua nó
   QUESTION: '{query}'
   PASSAGE: '{relevant_passage}'
 
@@ -48,7 +48,6 @@ def make_rag_prompt(query, relevant_passage):
   """).format(query=query, relevant_passage=escaped)
 
   return prompt
-
 
 def generate_response(prompt):
     gemini_api_key = os.getenv("GEMINI_API_KEY")
